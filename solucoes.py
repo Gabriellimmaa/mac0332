@@ -1,6 +1,20 @@
 def sao_anagramas(string1, string2):
-    # TODO: Implementar lógica
-    pass
+  
+  string1 = input("Digite a primeira palavra: ")
+  string2 = input("Digite a segunda palavra: ")
+
+
+  string1 = string1.lower()
+  string2 = string2.lower()//
+
+
+  resultado =  len(string1) == len(string2) and sorted(string1) == sorted(string2)
+
+
+
+  return resultado
+
+
 
 def cifra_de_cesar(texto: str, deslocamento: int) -> str:
     """
