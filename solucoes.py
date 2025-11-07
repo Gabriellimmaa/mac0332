@@ -1,19 +1,22 @@
-def sao_anagramas(string1, string2):
-  
-  string1 = input("Digite a primeira palavra: ")
-  string2 = input("Digite a segunda palavra: ")
+def sao_anagramas(string1: str, string2: str) -> bool:
+    """
+    Verifica se duas strings são anagramas.
 
+    Duas palavras são consideradas anagramas se possuem as mesmas letras,
+    com a mesma quantidade, mas em ordem diferente.
 
-  string1 = string1.lower()
-  string2 = string2.lower()//
+    Args:
+        string1 (str): Primeira string a ser comparada.
+        string2 (str): Segunda string a ser comparada.
 
+    Returns:
+        bool: Retorna True se as strings forem anagramas, caso contrário False.
+    """
+    string1 = string1.lower()
+    string2 = string2.lower()
 
-  resultado =  len(string1) == len(string2) and sorted(string1) == sorted(string2)
-
-
-
-  return resultado
-
+    resultado = len(string1) == len(string2) and sorted(string1) == sorted(string2)
+    return resultado
 
 
 def cifra_de_cesar(texto: str, deslocamento: int) -> str:
