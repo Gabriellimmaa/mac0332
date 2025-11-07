@@ -73,6 +73,44 @@ def encontrar_maior_palavra(frase: str) -> str:
 
   return maior_palavra
 
-def valida_cpf(cpf_string):
-    # TODO: Implementar lógica
-    pass
+def valida_cpf(cpf_string: str) -> bool:
+    """
+    Valida um CPF (Cadastro de Pessoa Física) brasileiro.
+
+    A função aceita CPFs com ou sem pontuação (ex.: '529.982.247-25' ou '52998224725').
+
+    Regras implementadas:
+    - Remove qualquer caractere não numérico.
+    - Verifica se tem 11 dígitos.
+    - Rejeita CPFs com todos os dígitos iguais (ex.: '00000000000').
+    - Calcula os dois dígitos verificadores segundo o algoritmo padrão do CPF.
+
+    Returns:
+        bool: True se o CPF for válido, False caso contrário.
+    """
+    if not isinstance(cpf_string, str):
+        return False
+
+    cpf = ''.join(ch for ch in cpf_string if ch.isdigit())
+
+    if len(cpf) != 11:
+        return False
+
+    if cpf == cpf[0] * 11:
+        return False
+
+    nums = [int(c) for c in cpf]
+
+    s = sum(nums[i] * (10 - i) for i in range(9))
+    r = s % 11
+    dig1 = 0 if r < 2 else 11 - r
+    if nums[9] != dig1:
+        return False
+
+    s = sum(nums[i] * (11 - i) for i in range(10))
+    r = s % 11
+    dig2 = 0 if r < 2 else 11 - r
+    if nums[10] != dig2:
+        return False
+
+    return True
