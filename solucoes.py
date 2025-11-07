@@ -48,6 +48,31 @@ def cifra_de_cesar(texto: str, deslocamento: int) -> str:
             cifra += char
     return cifra
 
+def encontrar_maior_palavra(frase: str) -> str:
+
+  """
+  Verifica qual a maior palavra de uma frase
+
+
+  Args:
+    frase: (str): String em que será encontrada a maior palavra
+
+  Returns:
+    Str: retorna a maior palavra encontrada na frase
+  """
+
+  maior_palavra = ""
+  maior_tamanho = 0
+
+  lista_de_palavras = frase.split()
+
+  for palavra in lista_de_palavras:
+      if len(palavra) > maior_tamanho:
+        maior_tamanho = len(palavra)
+        maior_palavra = palavra
+
+  return maior_palavra
+
 def valida_cpf(cpf_string):
     # TODO: Implementar lógica
     pass
